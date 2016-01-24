@@ -1,0 +1,143 @@
+title = "Blog"
+url = "/blog/:slug"
+layout = "default"
+hidden = "0"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "kategori"
+==
+<?php
+function onEnd()
+{
+	$this['blog']=Rainlab\Blog\Models\Post::find($this['post']->id);
+	$this['artikel']=Rainlab\Blog\Models\Post::where('id','<>',$this['post']->id)->get();
+    $this->page->title = $this['post']->title;
+}
+?>
+==
+
+<style>
+	p{
+		text-align: justify;
+		line-height: 25px;
+	}
+
+	img.feature{
+		margin:0 auto;
+	}
+
+	.artikel img{
+		height: 100%;
+		width: 100%;
+	}
+
+</style>
+
+<div style="background:#1A1414;color:white;padding:10px;">
+	<div class="container">
+		<h2>{{blog.title}}</h2>
+	</div>
+</div>
+
+<div id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 artikel">
+				<p class="well well-sm">
+					<i class="fa fa-calendar"></i> &nbsp;
+				    Posted
+				    {% if post.categories.count %} in
+				        {% for category in post.categories %}
+				            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+				        {% endfor %}
+				    {% endif %}
+				    on {{ post.published_at|date('M d, Y') }}
+				</p>
+
+				{% if post.featured_images.count %}
+				    <div class="featured-images text-center">
+				        {% for image in post.featured_images %}
+				            <p>
+				                <img
+				                    data-src="{{ image.filename }}"
+				                    src="{{ image.path }}"
+				                    alt="{{ image.description }}"
+				                    style="max-width: 100%"
+				                    class="img-responsive feature" />
+				            </p>
+				        {% endfor %}
+				    </div>
+				{% endif %}
+
+				<!--blog.content_html|raw -->
+				{{blog.content_html|raw}}
+				
+				<!--
+				{% if post.content_images.count %}
+				    <div class="featured-images text-center">
+				        {% for image in post.content_images %}
+				            <p>
+				                <img
+				                    data-src="{{ image.filename }}"
+				                    src="{{ image.path }}"
+				                    alt="{{ image.description }}"
+				                    style="max-width: 100%"
+				                    class="img-responsive feature" />
+				            </p>
+				        {% endfor %}
+				    </div>
+				{% endif %}
+				-->
+
+			</div>
+
+			<div class="col-lg-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4>Artikel Lainnya</h4>
+					</div>
+
+					<div class="panel-body">
+							{% for ar in artikel %}
+								<div class="row">
+									<div class="col-lg-4">
+										{% if ar.featured_images.count %}
+										    <div class="featured-images text-center">
+										        {% for image in ar.featured_images %}
+										            <p>
+										                <img
+										                    data-src="{{ image.filename }}"
+										                    src="{{ image.path }}"
+										                    alt="{{ image.description }}"
+										                    style="max-width: 100%"
+										                    class="img-responsive feature" />
+										            </p>
+										        {% endfor %}
+										    </div>
+										{% endif %}								
+									</div>
+
+									<div class="col-lg-8">
+										<a href="{{ 'blog'|page ({ 'slug':  ar.slug  }) }}">
+											<strong>{{ar.title}}</strong>
+										</a>
+									</div>
+								</div>
+								<p class="well well-sm">
+									<i class="fa fa-calendar"></i> &nbsp;
+								    Posted
+								    {% if ar.categories.count %} in
+								        {% for category in ar.categories %}
+								            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+								        {% endfor %}
+								    {% endif %}
+								    on {{ ar.published_at|date('M d, Y') }}
+								</p>
+							{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

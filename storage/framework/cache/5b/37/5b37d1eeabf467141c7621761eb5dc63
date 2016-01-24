@@ -1,0 +1,124 @@
+1453261738s:3743:"a:6:{s:5:"mtime";i:1449980851;s:7:"content";s:1777:"title ="Blog"
+url ="artikel"
+hidden=0
+layout="default"
+==
+<?php
+	function onStart(){
+		$this['blogPosts']=Rainlab\Blog\Models\Post::orderBy('id','desc')->paginate(4);
+	}
+?>
+==
+<div style="background:#1A1414;color:white;padding:10px;">
+	<div class="container">
+		<h2>Berita</h2>
+	</div>
+</div>
+
+<div id="content">
+	<div class="container">
+		<div class="row" id="listitems2" style="display:none">
+					{% for blog in blogPosts %}
+						<!--col-lg-6-->
+						<div class="col-lg-4 col-xs-12">
+							<div class="thumbnail">
+								{% if blog.featured_images.count %}
+								    {% for image in blog.featured_images %}
+								        <img
+								            data-src="{{ image.filename }}"
+								            src="{{ image.path }}"
+								            alt="{{ image.description }}"
+								            class="img-responsive" 
+								            style="height:140px;">
+								        {% endfor %}
+								{% else %}
+									<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+								{% endif %}
+
+								<div class="caption">
+									<a href="{{ 'blog'|page ({ 'slug':  blog.slug  }) }}">
+										<h4>
+											<strong>
+												{{blog.title}}
+											</strong>
+										</h4>
+									</a>
+									<p style="text-align:justify;">
+										{{str_limit(blog.content,100)}}
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- end col-lg-6-->
+					{% endfor %}
+				</div>
+				<!-- end row dari col lg-7-->
+
+				<ul class="pager" id="listitems2-pagination" style="display:none">
+				  	<li class="previous">
+				  		<a id="listitems2-previous" href="#" class="disabled">&larr; Older</a>
+				  	</li>
+				  	<li class="next">
+				  		<a id="listitems2-next" href="#">Newer &rarr;</a>
+				  	</li>
+				</ul>
+	</div>
+</div>";s:7:"viewBag";a:0:{}s:8:"settings";a:5:{s:5:"title";s:4:"Blog";s:3:"url";s:7:"artikel";s:6:"hidden";s:1:"0";s:6:"layout";s:7:"default";s:10:"components";a:0:{}}s:4:"code";s:107:"
+	function onStart(){
+		$this['blogPosts']=Rainlab\Blog\Models\Post::orderBy('id','desc')->paginate(4);
+	}
+";s:6:"markup";s:1601:"<div style="background:#1A1414;color:white;padding:10px;">
+	<div class="container">
+		<h2>Berita</h2>
+	</div>
+</div>
+
+<div id="content">
+	<div class="container">
+		<div class="row" id="listitems2" style="display:none">
+					{% for blog in blogPosts %}
+						<!--col-lg-6-->
+						<div class="col-lg-4 col-xs-12">
+							<div class="thumbnail">
+								{% if blog.featured_images.count %}
+								    {% for image in blog.featured_images %}
+								        <img
+								            data-src="{{ image.filename }}"
+								            src="{{ image.path }}"
+								            alt="{{ image.description }}"
+								            class="img-responsive" 
+								            style="height:140px;">
+								        {% endfor %}
+								{% else %}
+									<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+								{% endif %}
+
+								<div class="caption">
+									<a href="{{ 'blog'|page ({ 'slug':  blog.slug  }) }}">
+										<h4>
+											<strong>
+												{{blog.title}}
+											</strong>
+										</h4>
+									</a>
+									<p style="text-align:justify;">
+										{{str_limit(blog.content,100)}}
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- end col-lg-6-->
+					{% endfor %}
+				</div>
+				<!-- end row dari col lg-7-->
+
+				<ul class="pager" id="listitems2-pagination" style="display:none">
+				  	<li class="previous">
+				  		<a id="listitems2-previous" href="#" class="disabled">&larr; Older</a>
+				  	</li>
+				  	<li class="next">
+				  		<a id="listitems2-next" href="#">Newer &rarr;</a>
+				  	</li>
+				</ul>
+	</div>
+</div>";}";

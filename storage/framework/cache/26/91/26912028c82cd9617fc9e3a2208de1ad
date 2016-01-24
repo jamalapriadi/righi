@@ -1,0 +1,419 @@
+1453261738s:17438:"a:6:{s:5:"mtime";i:1449983068;s:7:"content";s:8593:"title ="home"
+url = "/"
+layout = "default"
+hidden = "0"
+
+[blogPosts]
+pageNumber = ":page"
+categoryFilter = "profil"
+postsPerPage = "10"
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "kategori"
+postPage = "blog"
+==
+
+<?php
+	function onStart(){
+		$feature=$this['feature']=Rainlab\Blog\Models\Post::orderBy('id','desc')->first();
+		$this['blogPosts']=Rainlab\Blog\Models\Post::where('id','<>',$feature->id)->orderBy('id','desc')->paginate(4);
+	}
+?>
+==
+
+<!-- slide-->
+	<ul class="bxslider">
+	  	<li><img src="{{'assets/img/slide/3.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	  	<li><img src="{{'assets/img/slide/2.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	  	<li><img src="{{'assets/img/slide/1.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	</ul>
+    
+    <!--end of slide-->
+
+    <div class="container">
+    	<blockquote>
+			<h2 class="text-center quote">Man Power Recruitment, Supplier and Trading</h2>
+    	</blockquote>
+    </div>
+    <br>
+    
+	<div style="background:#16A642; color:white; padding-top:30px; padding-bottom:30px;">
+		<div class="container wow  bounceInLeft" style="margin-bottom:20px;">
+		  <div class="heading"> 
+		    <!-- Heading -->
+		    <h2>Tentang PT. RIGHI Marine Internasional</h2>
+		    <br/>
+		  </div>
+		  <div class="row">
+		    <div class="col-md-4"> <img src="{{'assets/img/slide/bg.jpg'|theme}}" alt="" class="img-responsive"> </div>
+		    <div class="col-md-8">
+		      <p style="font-size:18px; text-align:justify;"> PT Righi Marine Internasional yang selama ini dikenal adalah sebuah Perusahaan Pelaksana Penempatan Tenaga Kerja Indonesia Swasta yang menempatkan Tenaga Kerja Indonesia keLuar Negeri baik di sektor Formal maupun Informal dengan Negara Tujuan Penempatanya itu Taiwan,Fiji, Thailand,Samoa, Palau, dan Mauritius</p>
+		      <blockquote class="blockquote-1">
+		        <p style="text-align:justify;">
+		        	Visi dan Misi kami adalah menciptakan, melayani, dan menempatkan Tenaga Kerja Indonesia yang profesional dan berkualitas dengan integritas, produktivitas dan keunggulan yang kami miliki, sehingga diharapkan Tenaga Kerja Indonesia yang kami tempatkan tersebutakan mendapatkan peningkatan kesejahteraan bagi dirinya maupun keluarganya.
+		        </p>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- testimoni-->
+	<div id="produk">
+		<div class="container">
+			<div class="row">
+			    <div class="col-md-12" data-wow-delay="0.5s">
+			        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+			            <!-- Bottom Carousel Indicators -->
+			            <ol class="carousel-indicators">
+			                <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="{{'assets/img/pelaut1.jpg'|theme}}" alt=""></li>
+			                <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="{{'assets/img/pelaut2.jpg'|theme}}" alt=""></li>
+			                <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="{{'assets/img/pelaut3.jpg'|theme}}" alt=""></li>
+			            </ol>
+
+			            <!-- Carousel Slides / Quotes -->
+			            <div class="carousel-inner text-center">
+							<!-- Quote 1 -->
+			                <div class="item active">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+											<p>Jangan mencari seorang teman yang membuat Anda merasa nyaman, menemukan seorang teman yang memaksa Anda terus berkembang [itulah aku ...]</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>
+			                </div>
+			                <!-- Quote 2 -->
+			                <div class="item">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+			                                <p>Cara terbaik memprediksi masa depan Anda adalah dengan menciptakan masa depan itu sendiri.</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>        
+			                </div>
+			                <!-- Quote 3 -->
+			                <div class="item">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+			                                <p>Banyak orang yang sebenarnya sangat dekat dengan sukses tapi sayangnya, mereka kemudian menyerah.</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>
+			                </div>
+			        </div>
+
+			        <!-- Carousel Buttons Next/Prev -->
+			        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+			        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+			    </div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- end testimoni-->
+
+
+	<!-- container-->
+	<div class="container wow  bounceInUp">
+		<!--row-->
+		<div class="row">
+			<!-- col-lg-7-->
+			<div class="col-lg-8 col-xs-12">
+				<h3>Berita</h3>
+
+				<div class="featureblog">
+					{% if feature.featured_images.count %}
+					    {% for image in feature.featured_images %}
+					        <img
+					            data-src="{{ image.filename }}"
+					            src="{{ image.path }}"
+					            alt="{{ image.description }}"
+					            class="img-responsive"
+					            style="height:320px;" />
+					        {% endfor %}
+					{% else %}
+						<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+					{% endif %}
+					<div class="caption">
+						<a href="{{ 'blog'|page ({ 'slug':  feature.slug  }) }}">
+							<h4>
+								<strong>{{feature.title}}</strong>
+							</h4>
+						</a>
+						<p>
+							{{str_limit(feature.content,100)}}
+						</p>
+					</div>
+				</div>
+
+				<!--row dari col-lg-7-->
+				<div class="row" id="listitems" style="display:none">
+					{% for blog in blogPosts %}
+						<!--col-lg-6-->
+						<div class="col-lg-6 col-xs-12">
+							<div class="thumbnail">
+								{% if blog.featured_images.count %}
+								    {% for image in blog.featured_images %}
+								        <img
+								            data-src="{{ image.filename }}"
+								            src="{{ image.path }}"
+								            alt="{{ image.description }}"
+								            class="img-responsive" 
+								            style="height:140px;">
+								        {% endfor %}
+								{% else %}
+									<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+								{% endif %}
+
+								<div class="caption">
+									<a href="{{ 'blog'|page ({ 'slug':  blog.slug  }) }}">
+										<h4>
+											<strong>
+												{{blog.title}}
+											</strong>
+										</h4>
+									</a>
+									<p style="text-align:justify;">
+										{{str_limit(blog.content,100)}}
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- end col-lg-6-->
+					{% endfor %}
+				</div>
+				<!-- end row dari col lg-7-->
+
+				<ul class="pager" id="listitems-pagination" style="display:none">
+				  	<li class="previous">
+				  		<a id="listitems-previous" href="#" class="disabled">&larr; Older</a>
+				  	</li>
+				  	<li class="next">
+				  		<a id="listitems-next" href="#">Newer &rarr;</a>
+				  	</li>
+				</ul>
+
+			</div>
+			<!-- col lg- 7-->
+
+			<div class="col-lg-4 col-xs-12 social" style="margin-bottom:30px;">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.5&appId=887699241284748";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+
+					<div class="fb-page" data-href="https://www.facebook.com/PT-Righi-Marine-Internasional-1525267577785644" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+			</div>
+		</div>
+		<!-- end row-->
+	</div>
+	<!--end of container-->";s:7:"viewBag";a:0:{}s:8:"settings";a:5:{s:5:"title";s:4:"home";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:6:"hidden";s:1:"0";s:10:"components";a:1:{s:9:"blogPosts";a:7:{s:10:"pageNumber";s:5:":page";s:14:"categoryFilter";s:6:"profil";s:12:"postsPerPage";s:2:"10";s:14:"noPostsMessage";s:14:"No posts found";s:9:"sortOrder";s:17:"published_at desc";s:12:"categoryPage";s:8:"kategori";s:8:"postPage";s:4:"blog";}}}s:4:"code";s:223:"
+	function onStart(){
+		$feature=$this['feature']=Rainlab\Blog\Models\Post::orderBy('id','desc')->first();
+		$this['blogPosts']=Rainlab\Blog\Models\Post::where('id','<>',$feature->id)->orderBy('id','desc')->paginate(4);
+	}
+";s:6:"markup";s:8108:"<!-- slide-->
+	<ul class="bxslider">
+	  	<li><img src="{{'assets/img/slide/3.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	  	<li><img src="{{'assets/img/slide/2.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	  	<li><img src="{{'assets/img/slide/1.jpg'|theme}}" alt="" class="img-responsive slideshow" title=""></li>
+	</ul>
+    
+    <!--end of slide-->
+
+    <div class="container">
+    	<blockquote>
+			<h2 class="text-center quote">Man Power Recruitment, Supplier and Trading</h2>
+    	</blockquote>
+    </div>
+    <br>
+    
+	<div style="background:#16A642; color:white; padding-top:30px; padding-bottom:30px;">
+		<div class="container wow  bounceInLeft" style="margin-bottom:20px;">
+		  <div class="heading"> 
+		    <!-- Heading -->
+		    <h2>Tentang PT. RIGHI Marine Internasional</h2>
+		    <br/>
+		  </div>
+		  <div class="row">
+		    <div class="col-md-4"> <img src="{{'assets/img/slide/bg.jpg'|theme}}" alt="" class="img-responsive"> </div>
+		    <div class="col-md-8">
+		      <p style="font-size:18px; text-align:justify;"> PT Righi Marine Internasional yang selama ini dikenal adalah sebuah Perusahaan Pelaksana Penempatan Tenaga Kerja Indonesia Swasta yang menempatkan Tenaga Kerja Indonesia keLuar Negeri baik di sektor Formal maupun Informal dengan Negara Tujuan Penempatanya itu Taiwan,Fiji, Thailand,Samoa, Palau, dan Mauritius</p>
+		      <blockquote class="blockquote-1">
+		        <p style="text-align:justify;">
+		        	Visi dan Misi kami adalah menciptakan, melayani, dan menempatkan Tenaga Kerja Indonesia yang profesional dan berkualitas dengan integritas, produktivitas dan keunggulan yang kami miliki, sehingga diharapkan Tenaga Kerja Indonesia yang kami tempatkan tersebutakan mendapatkan peningkatan kesejahteraan bagi dirinya maupun keluarganya.
+		        </p>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- testimoni-->
+	<div id="produk">
+		<div class="container">
+			<div class="row">
+			    <div class="col-md-12" data-wow-delay="0.5s">
+			        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+			            <!-- Bottom Carousel Indicators -->
+			            <ol class="carousel-indicators">
+			                <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="{{'assets/img/pelaut1.jpg'|theme}}" alt=""></li>
+			                <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="{{'assets/img/pelaut2.jpg'|theme}}" alt=""></li>
+			                <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="{{'assets/img/pelaut3.jpg'|theme}}" alt=""></li>
+			            </ol>
+
+			            <!-- Carousel Slides / Quotes -->
+			            <div class="carousel-inner text-center">
+							<!-- Quote 1 -->
+			                <div class="item active">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+											<p>Jangan mencari seorang teman yang membuat Anda merasa nyaman, menemukan seorang teman yang memaksa Anda terus berkembang [itulah aku ...]</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>
+			                </div>
+			                <!-- Quote 2 -->
+			                <div class="item">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+			                                <p>Cara terbaik memprediksi masa depan Anda adalah dengan menciptakan masa depan itu sendiri.</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>        
+			                </div>
+			                <!-- Quote 3 -->
+			                <div class="item">
+			                    <blockquote>
+			                        <div class="row">
+			                            <div class="col-sm-8 col-sm-offset-2">
+			                                <p>Banyak orang yang sebenarnya sangat dekat dengan sukses tapi sayangnya, mereka kemudian menyerah.</p>
+			                                <small>Someone famous</small>
+			                            </div>
+			                        </div>
+			                    </blockquote>
+			                </div>
+			        </div>
+
+			        <!-- Carousel Buttons Next/Prev -->
+			        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+			        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+			    </div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- end testimoni-->
+
+
+	<!-- container-->
+	<div class="container wow  bounceInUp">
+		<!--row-->
+		<div class="row">
+			<!-- col-lg-7-->
+			<div class="col-lg-8 col-xs-12">
+				<h3>Berita</h3>
+
+				<div class="featureblog">
+					{% if feature.featured_images.count %}
+					    {% for image in feature.featured_images %}
+					        <img
+					            data-src="{{ image.filename }}"
+					            src="{{ image.path }}"
+					            alt="{{ image.description }}"
+					            class="img-responsive"
+					            style="height:320px;" />
+					        {% endfor %}
+					{% else %}
+						<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+					{% endif %}
+					<div class="caption">
+						<a href="{{ 'blog'|page ({ 'slug':  feature.slug  }) }}">
+							<h4>
+								<strong>{{feature.title}}</strong>
+							</h4>
+						</a>
+						<p>
+							{{str_limit(feature.content,100)}}
+						</p>
+					</div>
+				</div>
+
+				<!--row dari col-lg-7-->
+				<div class="row" id="listitems" style="display:none">
+					{% for blog in blogPosts %}
+						<!--col-lg-6-->
+						<div class="col-lg-6 col-xs-12">
+							<div class="thumbnail">
+								{% if blog.featured_images.count %}
+								    {% for image in blog.featured_images %}
+								        <img
+								            data-src="{{ image.filename }}"
+								            src="{{ image.path }}"
+								            alt="{{ image.description }}"
+								            class="img-responsive" 
+								            style="height:140px;">
+								        {% endfor %}
+								{% else %}
+									<img src="{{'assets/img/berita/none.jpg'|theme}}" alt="" class="img-responsive">
+								{% endif %}
+
+								<div class="caption">
+									<a href="{{ 'blog'|page ({ 'slug':  blog.slug  }) }}">
+										<h4>
+											<strong>
+												{{blog.title}}
+											</strong>
+										</h4>
+									</a>
+									<p style="text-align:justify;">
+										{{str_limit(blog.content,100)}}
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- end col-lg-6-->
+					{% endfor %}
+				</div>
+				<!-- end row dari col lg-7-->
+
+				<ul class="pager" id="listitems-pagination" style="display:none">
+				  	<li class="previous">
+				  		<a id="listitems-previous" href="#" class="disabled">&larr; Older</a>
+				  	</li>
+				  	<li class="next">
+				  		<a id="listitems-next" href="#">Newer &rarr;</a>
+				  	</li>
+				</ul>
+
+			</div>
+			<!-- col lg- 7-->
+
+			<div class="col-lg-4 col-xs-12 social" style="margin-bottom:30px;">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.5&appId=887699241284748";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+
+					<div class="fb-page" data-href="https://www.facebook.com/PT-Righi-Marine-Internasional-1525267577785644" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+			</div>
+		</div>
+		<!-- end row-->
+	</div>
+	<!--end of container-->";}";

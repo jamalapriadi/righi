@@ -1,0 +1,93 @@
+1453261749s:4636:"a:6:{s:5:"mtime";i:1449941960;s:7:"content";s:2240:"<div class="top-menu">
+        <div class="container">
+            <div class="pull-left">
+                <i class="glyphicon glyphicon-home"></i> &nbsp;
+                Righi Marine Internasional
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-envelope"></i> &nbsp;
+                Info@Righimarine.com
+            </div>
+
+            <div class="pull-right">
+                Social Media &nbsp;
+                <i class="fa fa-facebook"></i> &nbsp;
+                <i class="fa fa-twitter"></i> &nbsp;
+                <i class="fa fa-youtube"></i> &nbsp;
+            </div>
+        </div>
+    </div>
+	<header id="mainnav">
+    	<div class="container">
+            <div class="logo">
+                <img src="{{'assets/img/logo.png'|theme}}" class="img-responsive logo">
+            </div>
+            <h3 class="header-title">PT. Righi Marine Internasional</h3>
+            <div class="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="background:white">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar" style="background:black;"></span>
+                      <span class="icon-bar" style="background:black;"></span>
+                      <span class="icon-bar" style="background:black;"></span>
+                    </button>
+                  </div>
+
+                <div id="navbar" class="collapse navbar-collapse pull-right">
+                	<ul class="nav navbar-nav">
+                		<li class="#"><a title="Home" href="{{ 'home'|page }}">Beranda</a></li>
+						<li class="#"><a title="Sample Page" href="{{'tentang-kami'|page}}">Tentang Kami</a></li>
+                        <li class="#"><a title="Sample Page" href="{{'artikel'|page}}">Berita</a></li>
+                        <li class="#"><a title="Gallery" href="{{'gallery'|page}}">Galeri</a></li>
+                        <li class="#"><a title="Gallery" href="{{'kontak-kami'|page}}">Kontak Kami</a></li>
+					</ul>
+				</div>            
+			</div>
+        </div>
+    </header>";s:7:"viewBag";a:0:{}s:8:"settings";a:1:{s:10:"components";a:0:{}}s:4:"code";N;s:6:"markup";s:2240:"<div class="top-menu">
+        <div class="container">
+            <div class="pull-left">
+                <i class="glyphicon glyphicon-home"></i> &nbsp;
+                Righi Marine Internasional
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-envelope"></i> &nbsp;
+                Info@Righimarine.com
+            </div>
+
+            <div class="pull-right">
+                Social Media &nbsp;
+                <i class="fa fa-facebook"></i> &nbsp;
+                <i class="fa fa-twitter"></i> &nbsp;
+                <i class="fa fa-youtube"></i> &nbsp;
+            </div>
+        </div>
+    </div>
+	<header id="mainnav">
+    	<div class="container">
+            <div class="logo">
+                <img src="{{'assets/img/logo.png'|theme}}" class="img-responsive logo">
+            </div>
+            <h3 class="header-title">PT. Righi Marine Internasional</h3>
+            <div class="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="background:white">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar" style="background:black;"></span>
+                      <span class="icon-bar" style="background:black;"></span>
+                      <span class="icon-bar" style="background:black;"></span>
+                    </button>
+                  </div>
+
+                <div id="navbar" class="collapse navbar-collapse pull-right">
+                	<ul class="nav navbar-nav">
+                		<li class="#"><a title="Home" href="{{ 'home'|page }}">Beranda</a></li>
+						<li class="#"><a title="Sample Page" href="{{'tentang-kami'|page}}">Tentang Kami</a></li>
+                        <li class="#"><a title="Sample Page" href="{{'artikel'|page}}">Berita</a></li>
+                        <li class="#"><a title="Gallery" href="{{'gallery'|page}}">Galeri</a></li>
+                        <li class="#"><a title="Gallery" href="{{'kontak-kami'|page}}">Kontak Kami</a></li>
+					</ul>
+				</div>            
+			</div>
+        </div>
+    </header>";}";
